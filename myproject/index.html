@@ -4,54 +4,45 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Vue 3 Simple Slider - Mandalorian</title>
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <link href="./assets/css/style.css" rel="stylesheet" />
+    <!--CDN font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!--CDN font awesome-->
+    <!--file css-->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!--/file css-->
   </head>
 
   <body>
     <div id="app" v-cloak>
-      <h1 class="title">{{ series.title }}</h1>
 
+      <h1 class="title"> {{ movie['title']}} </h1>
       <div class="container">
         <div class="card movie">
-          <img :src="series.images[currentIndex]" :alt="series.title" />
-
+          <img :src="movie.images[0]" :alt="movie.title">
           <div class="thumbnails">
-            <img
-              v-for="(image, segnaposto) in series.images"
-              v-bind:src="image"
-              :alt="`Immagine ${segnaposto+1}`"
-              class="thumb"
-              :class="segnaposto === currentIndex ? 'active' : ''"
-              @click="changeImage(segnaposto)"
-            />
-          </div>
-
-          <div class="navigator">
-            <div class="prev" @click="prev">
-              <i class="fa-solid fa-chevron-left"></i>
-            </div>
-            <div class="next" @click="next">
-              <i class="fa-solid fa-chevron-right"> </i>
+            <img v-for="(image, index) in movie.images" :src="image" :alt="`img-${index}`" class="thumb" :class="index === 0 ? 'active' : ''"> <!--operatore ternario da :class-->
+            <div class="navigator">
+              <div @click="next" class="prev">
+                <i class="fa-solid fa-chevron-left"></i>
+              </div>
+              <div @click="prev" class="next">
+                <i class="fa-solid fa-chevron-right"> </i>
+              </div>
             </div>
           </div>
           <div class="details">
-            <h3 class="title">{{ series.title }}</h3>
-            <div>Category: {{ series.category }}</div>
-            <small>Lenght: {{ series.length }} min</small>
+            <h3 class="title">{{ movie.title }}</h3>
+            <div>Categoriy: {{ movie.category }}</div>
+            <span>Length: {{ movie['length'] }} min</span>
           </div>
         </div>
       </div>
     </div>
-    <script src="https://unpkg.com/vue@3"></script>
-    <script src="./assets/js/app.js"></script>
+    <!--CDN vuejs-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--/CDN vuejs-->
+    <!--add file js-->
+    <script src="assets/js/app.js"></script>
+    <!--/add file js-->
   </body>
 </html>
