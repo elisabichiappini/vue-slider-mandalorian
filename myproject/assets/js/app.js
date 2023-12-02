@@ -17,15 +17,23 @@ createApp ({
         category: 'Action',
         length: 120,
         },
+        currentImage: 0,
       };
-
-  },
+    },
   methods: {
     prev() {
-      console.log('sono prev')
+      console.log('sono prev');
+      this.currentImage--;
+      if(this.currentImage < 0) {
+        this.currentImage = this.movie.images.length - 1;
+      }
     },
     next() {
-      console.log('sono next')
+      console.log('sono next');
+      this.currentImage++;
+      if(this.currentImage > this.movie.images.length - 1) {
+        this.currentImage = 0;
+      }
     }
   }
 }).mount('#app');
