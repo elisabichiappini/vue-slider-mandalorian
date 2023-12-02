@@ -20,7 +20,7 @@
         <div class="card movie">
           <img :src="movie.images[currentImage]" :alt="movie.title">
           <div class="thumbnails">
-            <img v-for="(image, index) in movie.images" :src="image" :alt="`img-${index}`" class="thumb" :class="index === currentImage ? 'active' : ''"> <!--operatore ternario da :class-->
+            <img v-for="(image, index) in movie.images" :src="image" :alt="`img-${index}`" class="thumb" :class="index === currentImage ? 'active' : ''" @click="changeImage(index)"> <!--operatore ternario da :class-->
             <div class="navigator">
               <div @click="prev" class="prev">
                 <i class="fa-solid fa-chevron-left"></i>

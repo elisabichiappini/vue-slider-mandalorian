@@ -34,6 +34,12 @@ createApp ({
       if(this.currentImage > this.movie.images.length - 1) {
         this.currentImage = 0;
       }
+    },
+    // per cambiare la thumnail a mia scelta sulle immagini e mettendo segnaposto come argomneto
+    changeImage (index) {
+      console.log('cambio immagine');
+      console.log(index);
+      this.currentImage = index;
     }
   }
 }).mount('#app');
